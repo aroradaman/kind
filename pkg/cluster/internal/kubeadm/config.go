@@ -287,7 +287,7 @@ evictionHard:
 {{end}}{{end}}
 {{if ne .KubeProxyMode "None"}}
 ---
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
+apiVersion: kubeproxy.config.k8s.io/v1alpha2
 kind: KubeProxyConfiguration
 metadata:
   name: config
@@ -296,17 +296,17 @@ mode: "{{ .KubeProxyMode }}"
 {{ range $index, $gate := .SortedFeatureGates }}
   "{{ (StructuralData $gate.Name) }}": {{ $gate.Value }}
 {{end}}{{end}}
-iptables:
-  minSyncPeriod: 1s
-conntrack:
+minSyncPeriod: 1s
+linux:
+  conntrack:
 # Skip setting sysctl value "net.netfilter.nf_conntrack_max"
 # It is a global variable that affects other namespaces
-  maxPerCore: 0
+    maxPerCore: 0
 {{if .RootlessProvider}}
 # Skip setting "net.netfilter.nf_conntrack_tcp_timeout_established"
-  tcpEstablishedTimeout: 0s
+    tcpEstablishedTimeout: 0s
 # Skip setting "net.netfilter.nf_conntrack_tcp_timeout_close"
-  tcpCloseWaitTimeout: 0s
+    tcpCloseWaitTimeout: 0s
 {{end}}{{end}}
 `
 
@@ -425,7 +425,7 @@ evictionHard:
 {{if .DisableLocalStorageCapacityIsolation}}localStorageCapacityIsolation: false{{end}}
 {{if ne .KubeProxyMode "None"}}
 ---
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
+apiVersion: kubeproxy.config.k8s.io/v1alpha2
 kind: KubeProxyConfiguration
 metadata:
   name: config
@@ -434,17 +434,17 @@ mode: "{{ .KubeProxyMode }}"
 {{ range $index, $gate := .SortedFeatureGates }}
   "{{ (StructuralData $gate.Name) }}": {{ $gate.Value }}
 {{end}}{{end}}
-iptables:
-  minSyncPeriod: 1s
-conntrack:
+minSyncPeriod: 1s
+linux:
+  conntrack:
 # Skip setting sysctl value "net.netfilter.nf_conntrack_max"
 # It is a global variable that affects other namespaces
-  maxPerCore: 0
+    maxPerCore: 0
 {{if .RootlessProvider}}
 # Skip setting "net.netfilter.nf_conntrack_tcp_timeout_established"
-  tcpEstablishedTimeout: 0s
+    tcpEstablishedTimeout: 0s
 # Skip setting "net.netfilter.nf_conntrack_tcp_timeout_close"
-  tcpCloseWaitTimeout: 0s
+    tcpCloseWaitTimeout: 0s
 {{end}}{{end}}
 `
 

@@ -155,7 +155,7 @@ evictionHard:
   imagefs.available: "0%"
 ---
 # no-op entry that exists solely so it can be patched
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
+apiVersion: kubeproxy.config.k8s.io/v1alpha2
 kind: KubeProxyConfiguration
 metadata:
   name: config
@@ -225,7 +225,7 @@ kind: KubeletConfiguration
 metadata:
   name: config
 ---
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
+apiVersion: kubeproxy.config.k8s.io/v1alpha2
 kind: KubeProxyConfiguration
 metadata:
   name: config
@@ -313,7 +313,7 @@ kind: KubeletConfiguration
 metadata:
   name: config
 ---
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
+apiVersion: kubeproxy.config.k8s.io/v1alpha2
 kind: KubeProxyConfiguration
 metadata:
   name: config
@@ -397,7 +397,7 @@ kind: KubeletConfiguration
 metadata:
   name: config
 ---
-apiVersion: kubeproxy.config.k8s.io/v1alpha1
+apiVersion: kubeproxy.config.k8s.io/v1alpha2
 kind: KubeProxyConfiguration
 metadata:
   name: config
